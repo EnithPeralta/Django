@@ -1,0 +1,24 @@
+{% extends "index.html"%}
+{%block encabezado%}
+{% include "encabezado.html"%}
+{% endblock%}
+{%block contenido%}
+<div>
+    <form action="/agregarCategoria/" method="post">
+        {% csrf_token%}
+        <div>
+            <h3>Agregar Categoria</h3>
+        </div>
+        <div>
+            <input type="text" name="nombre" id="nombre" class="form-control" required>
+            <label for="nombre">Nombre</label>
+        </div>
+        <div>
+            <button><ion-icon name="add-circle-outline"></ion-icon></button>
+        </div>
+    </form>
+</div>
+{% endblock%}
+{%block piePagina %}
+{% include 'piePagina.html'%}
+{%endblock%}

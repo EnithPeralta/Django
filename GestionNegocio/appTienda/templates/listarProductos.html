@@ -1,0 +1,35 @@
+{% extends "index.html"%}
+{%block contenido%}
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Categoria</th>
+                <th>Foto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for producto in listarProductos %}
+            <tr>
+                <td>{{producto.codigo}}</td>
+                <td>{{producto.nombre}}</td>
+                <td>${{producto.precio}}</td>
+                <td>{{producto.categoria.nombre}}</td>
+                <td>
+                    <img src="../media/{{producto.foto}}" width="50" height="50" alt="">
+                </td>
+                <td>
+                    <a href="/consultaProducto/{{producto.id}}">
+                        <ion-icon name="create-outline"></ion-icon>
+                    </a>
+                    <ion-icon name="trash-outline" onclick="abrirModalEliminar('{{producto.id}}')"></ion-icon>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock%}

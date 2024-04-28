@@ -1,0 +1,46 @@
+{% extends "index.html"%}
+{%block contenido%}
+<div class="d-flex justify-content-center">
+    <div class="card p-3" style="width: 20rem; height: 30rem;">
+        <form action="/agregarProducto/" method="post" enctype="multipart/form-data" class="was-validated">
+            <div>
+                <h3>REGISTRAR PRODUCTOS</h3>
+            </div>
+            <div>
+                <label for="codigo">Codigo:</label>
+                <input type="number" name="codigo" id="codigo" class="form-control" value="{{producto.codigo}}"
+                    required>
+            </div>
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" class="form-control" value="{{producto.nombre}}" required>
+            </div>
+            <div>
+                <label for="precio">Precio:</label>
+                <input type="number" name="precio" id="precio" class="form-control" value="{{producto.precio}}"
+                    required>
+            </div>
+            <div>
+                <label for="cbCategoria">Categoria:</label>
+                <select name="cbCategoria" id="cbCategoria" class="form-select" required>
+                    <option value="">Seleccione</option>
+                    {% for categoria in listaCategorias%}
+                    <option value="{{categoria.id}}">{{categoria.nombre}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="fileFoto">Foto:</label>
+                <input type="file" id="fileFoto" name="fileFoto" class="form-control">
+                <div class="p-2 d-flex justify-content-center ">
+                    <img src="../media/{{producto.foto}}" width="50" height="50" alt="">
+                </div>
+            </div>
+            <div class="d-grid gap-2 d-flex justify-content-end" >
+                <button class="btn btn-outline-success "><ion-icon name="cart-outline"></ion-icon></button>
+                <button class="btn btn-outline-danger"><ion-icon name="add-circle-outline"></ion-icon></button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock%}
